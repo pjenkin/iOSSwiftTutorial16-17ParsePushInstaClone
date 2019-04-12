@@ -16,12 +16,33 @@ class signUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+/*
+         // temporary code to check Parse connection working ok - should see result in Parse web console
+         let checkObject = PFObject(className: "Animals")        // add a class
+         // class names visible in Parse dashboard (eg http://34.247.48.250/apps/) a la tables
+         checkObject["name"] = "Fungal Ferret"
+         checkObject["colour"] = "Brown"
+         checkObject["age"] = 5
+         checkObject.saveInBackground()      // avoid having to write do ... try block
+         {(success, error) in
+         if error != nil
+         {
+         print(error?.localizedDescription)
+         }
+         else
+         {
+         print(success)
+         }
+         }
+         
+ */
 /*
         // temporary code to check Parse connection working ok - should see result in Parse web console
         let checkObject = PFObject(className: "Animals")        // add a class
         // class names visible in Parse dashboard (eg http://34.247.48.250/apps/) a la tables
-        checkObject["name"] = "Fungal Ferret"
-        checkObject["colour"] = "Brown"
+        checkObject["name"] = "Angry Bear"
+        checkObject["colour"] = "Red"
         checkObject["age"] = 5
         checkObject.saveInBackground()      // avoid having to write do ... try block
             {(success, error) in
@@ -34,11 +55,13 @@ class signUpVC: UIViewController {
                     print(success)
                 }
             }
- 
  */
+ 
         // temporary check by querying
         
         let query = PFQuery(className: "Animals")
+        //query.whereKey(<#T##key: String##String#>, equalTo: <#T##Any#>)
+        query.whereKey("name", equalTo: "Fungal Ferret")
         query.findObjectsInBackground
             {
                 (objects, error) in
