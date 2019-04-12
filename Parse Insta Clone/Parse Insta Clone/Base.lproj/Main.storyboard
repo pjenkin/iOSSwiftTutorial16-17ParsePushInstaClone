@@ -118,6 +118,9 @@
                                 <rect key="frame" x="249" y="303" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpBtnClicked:" destination="s9Y-EU-fVe" eventType="touchUpInside" id="FzM-zj-mci"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Parse  Instagram  Clone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVC-NR-gYg">
                                 <rect key="frame" x="57" y="111" width="252" height="21"/>
@@ -133,7 +136,6 @@
                     <navigationItem key="navigationItem" id="Bh1-Bh-xlz"/>
                     <connections>
                         <outlet property="passwordText" destination="zVX-fg-gMQ" id="EYC-BM-fLs"/>
-                        <outlet property="signUpBtnClicked" destination="OyG-dh-bfc" id="rck-0O-WuY"/>
                         <outlet property="usernameText" destination="YnC-ER-5fy" id="ImF-uf-8ux"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="toTabBarVC" id="fc5-Ox-jDk"/>
                     </connections>

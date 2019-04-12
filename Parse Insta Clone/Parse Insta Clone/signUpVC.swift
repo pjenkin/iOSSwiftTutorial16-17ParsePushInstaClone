@@ -56,7 +56,7 @@ class signUpVC: UIViewController {
                 }
             }
  */
- 
+/*
         // temporary check by querying
         
         let query = PFQuery(className: "Animals")
@@ -74,7 +74,7 @@ class signUpVC: UIViewController {
                     print(objects)      // check the debug output console
                 }
         }
-        
+*/
         // Do any additional setup after loading the view.
     }
 
@@ -86,7 +86,24 @@ class signUpVC: UIViewController {
     @IBAction func signInBtnClicked(_ sender: Any) {
     }
     
-    @IBOutlet weak var signUpBtnClicked: UIButton!
+    @IBAction func signUpBtnClicked(_ sender: Any) {
+        let user = PFUser()         // set up a Parse user
+        user.username = usernameText.text
+        user.password = passwordText.text
+        // user["age"]  // example possible usage with Parse (for non-username or non-password)
+        user.signUpInBackground {
+            (success, error) in
+        if error != nil
+        {
+            print(error?.localizedDescription)
+        }
+        else
+        {
+            print("User has been added")
+        }
+        
+    }
+
     /*
     // MARK: - Navigation
 
@@ -96,5 +113,5 @@ class signUpVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    }
 }
