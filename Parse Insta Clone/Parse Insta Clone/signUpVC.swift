@@ -16,7 +16,7 @@ class signUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+/*
         // temporary code to check Parse connection working ok - should see result in Parse web console
         let checkObject = PFObject(className: "Animals")        // add a class
         // class names visible in Parse dashboard (eg http://34.247.48.250/apps/) a la tables
@@ -25,7 +25,8 @@ class signUpVC: UIViewController {
         checkObject["age"] = 5
         checkObject.saveInBackground()      // avoid having to write do ... try block
             {(success, error) in
-                if error != nil{
+                if error != nil
+                {
                     print(error?.localizedDescription)
                 }
                 else
@@ -33,6 +34,24 @@ class signUpVC: UIViewController {
                     print(success)
                 }
             }
+ 
+ */
+        // temporary check by querying
+        
+        let query = PFQuery(className: "Animals")
+        query.findObjectsInBackground
+            {
+                (objects, error) in
+                if error != nil
+                {
+                    print(error?.localizedDescription)
+                }
+                else
+                {
+                    print(objects)      // check the debug output console
+                }
+        }
+        
         // Do any additional setup after loading the view.
     }
 
