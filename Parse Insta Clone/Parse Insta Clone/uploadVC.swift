@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -36,6 +37,54 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
 
     @IBAction func uploadBtnClicked(_ sender: Any) {
+        
+        let postObject = PFObject(className: "Posts")        // add a class
+        // class names visible in Parse dashboard (eg http://34.247.48.250/apps/) a la tables
+        postObject["commentText"] = self.commentText.text
+//        postObject["colour"] = "Red"
+//        postObject["age"] = 5
+        postObject.saveInBackground()      // avoid having to write do ... try block
+            {(success, error) in
+                if error != nil
+                {
+                    print(error?.localizedDescription)
+                }
+                else
+                {
+                    print(success)
+                    // if ok so far saving non-image data, try saving image
+                    
+                    
+                    // UIImageJPEGRepresentation(<#T##image: UIImage##UIImage#>, <#T##compressionQuality: CGFloat##CGFloat#>)
+                    if let image = UIImageJPEGRepresentation(self.postImage.image!, 0.5)
+                    {
+                        var parseImageFile = PFFileObject(data: image)
+                        parseImageFile?.saveInBackground(
+                            { (success, error) -> Void in
+                                if error == nil
+                                {
+                                    print("uploaded image")
+                                    // assuming successful upload, reset controls of upload view
+                                    self.postImage.image = UIImage(named: "select-picture.png")
+                                    self.commentText.text = ""
+                                    self.tabBarController?.selectedIndex = 0    // 0: viz the initial tab view controller, to the first ViewController ie feedVC - redirect thither
+                                }
+                                else
+                                {
+                                    print(error?.localizedDescription)
+                                    // TODO would be nice to rollback data here, as in a transaction
+                                }
+                            })
+                    }
+                    else
+                    {
+                        print("Problem processing image file data")
+                    }
+                }
+        }
+
+        
+        
     }
     
     /// select an image to upload - handler for image Tap gesturerecognized
