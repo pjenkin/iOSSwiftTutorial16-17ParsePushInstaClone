@@ -84,6 +84,21 @@ class signUpVC: UIViewController {
     }
     
     @IBAction func signInBtnClicked(_ sender: Any) {
+        
+        if usernameText.text != "" && passwordText.text != ""
+        {
+            PFUser.logInWithUsername(inBackground: usernameText.text!, password: passwordText.text!) {(user, error) in
+                if error != nil
+                {
+                    print(error?.localizedDescription)
+                }
+                else
+                {
+                    print("\(user?.username)")
+                }
+            }
+        }
+        
     }
     
     @IBAction func signUpBtnClicked(_ sender: Any) {

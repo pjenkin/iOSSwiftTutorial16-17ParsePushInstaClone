@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             (ParseMutableClientConfiguration) in
             ParseMutableClientConfiguration.applicationId = "4db3417ac4d79c34640760d3c13c3728cd26604a"
             ParseMutableClientConfiguration.clientKey = "571c1e762705f9975f4aafd4f91cb373d6e23d9f"
-            ParseMutableClientConfiguration.server = "http://34.247.48.250:80/parse"
+            ParseMutableClientConfiguration.server = "http://34.251.9.205:80/parse"
             // NB 3 vital values for Parse server connection (applicationId, clientKeyserver)
             // used from AWS or other host/server
             // all using ParseMutableClientConfiguration
