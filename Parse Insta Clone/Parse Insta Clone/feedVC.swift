@@ -12,14 +12,26 @@ import Parse
 class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    var postImageArray = [PFFileObject]()
+    var commentTextArray = [String]()
+    var postOwnerArray = [String]()
+    var postUuidArray = [String]()
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
         // set up table view
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // get feed data from server
+        getDataFromServer()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,15 +42,41 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // minimum 2 delegate functions for tableView
     // ... numberofrowsin  .. cellforrow....
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10       // temporary check for now
+        // return 10       // tempor ary check for now
+        return postImageArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // let cell = UITableViewCell()
         // populate Prototype cell(s) with bespoke cell object
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! feedCell
-        cell.usernameLabel.text = "checking username label"
-        // cell.textLabel?.text = "Checking table setup"
+        // cell.textLabel?.text = "Checking table setup"        // diagnostic
+        //cell.usernameLabel.text = "checking username label"   // diagnostic
+        
+        cell.postuuidLabel.isHidden = true
+        cell.usernameLabel.text = postOwnerArray[indexPath.row]
+        cell.postComment.text = commentTextArray[indexPath.row]
+        cell.postuuidLabel.text = postUuidArray[indexPath.row]
+        
+        postImageArray[indexPath.row].getDataInBackground {(data,error) in
+            if error != nil
+            {
+                let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                // set up button ready for user acknowledgement on alert
+                let button = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                alert.addAction(button)
+                // show alert with button
+                self.present(alert, animated: true, completion: nil)
+            }
+            else
+            {
+                cell.postImage.image = UIImage(data: data!)
+            }
+        }
+        
+        
+        
+
         return cell
     }
     
@@ -59,7 +97,6 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 alert.addAction(button)
                 // show alert with button
                 self.present(alert, animated: true, completion: nil)
-
             }
             else
             {
@@ -78,6 +115,41 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-    
+
+    func getDataFromServer()
+    {
+        let query = PFQuery(className: "Posts")
+        query.addDescendingOrder("createdAt")           // sort by date, oldest-first
+        query.findObjectsInBackground {(posts, error) in
+            if error != nil
+            {
+                let alert = UIAlertController(title: "Error", message:error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                let button = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                alert.addAction(button)
+                self.present(alert, animated: true, completion: nil)
+                // NB 1st: the Alert Controller, then 2nd: the button (as an AlertAction), then 3rd: add button action to the controller, 4th: present the alert to the user
+                print(error?.localizedDescription)
+            }
+        else
+            {
+                print(posts)      // diagnostic
+                
+                self.postImageArray.removeAll(keepingCapacity: false)
+                self.commentTextArray.removeAll(keepingCapacity: false)
+                self.postOwnerArray.removeAll(keepingCapacity: false)
+                self.postUuidArray.removeAll(keepingCapacity: false)
+                
+                for post in posts!
+                {
+                    // TODO will throw errors if blank fields in db
+                    self.postImageArray.append(post.object(forKey: "postImage") as! PFFileObject)
+                    self.commentTextArray.append(post.object(forKey: "commentText") as! String)
+                    self.postOwnerArray.append(post.object(forKey: "postOwner") as! String)
+                    self.postUuidArray.append(post.object(forKey: "postUuid") as! String)
+                }
+            }
+            self.tableView.reloadData()
+        }
+    }
 }
 

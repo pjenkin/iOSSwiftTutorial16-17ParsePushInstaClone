@@ -10,9 +10,13 @@ import UIKit
 
 class feedCell: UITableViewCell {
 
+    @IBOutlet weak var postImage: UIImageView!
+    
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var postComment: UITextView!
+    
+    @IBOutlet weak var postuuidLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

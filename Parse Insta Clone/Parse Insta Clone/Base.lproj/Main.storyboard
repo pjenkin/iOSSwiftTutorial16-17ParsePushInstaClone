@@ -77,6 +77,12 @@
                                                         <action selector="commentBtnClicked:" destination="Ipf-bn-sal" eventType="touchUpInside" id="EGO-de-Cdk"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ym7-iH-nY8">
+                                                    <rect key="frame" x="347" y="36" width="0.0" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="J9q-0A-iXC" firstAttribute="leading" secondItem="ojF-5I-baV" secondAttribute="leadingMargin" id="3Vg-Qg-kRZ"/>
@@ -89,6 +95,7 @@
                                                 <constraint firstItem="wgb-mD-jNw" firstAttribute="trailing" secondItem="ojF-5I-baV" secondAttribute="trailingMargin" id="NqB-mR-gXP"/>
                                                 <constraint firstItem="wgb-mD-jNw" firstAttribute="top" secondItem="CqX-ee-jAJ" secondAttribute="bottom" constant="21" id="Taz-2J-Xkl"/>
                                                 <constraint firstItem="Ja1-nM-Jm8" firstAttribute="leading" secondItem="ojF-5I-baV" secondAttribute="leadingMargin" id="Ut1-8V-dhL"/>
+                                                <constraint firstItem="ym7-iH-nY8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ojF-5I-baV" secondAttribute="leadingMargin" id="YFF-rK-rgf"/>
                                                 <constraint firstItem="CqX-ee-jAJ" firstAttribute="leading" secondItem="ojF-5I-baV" secondAttribute="leadingMargin" id="df9-kD-hO2"/>
                                                 <constraint firstItem="J9q-0A-iXC" firstAttribute="top" secondItem="ojF-5I-baV" secondAttribute="topMargin" constant="25" id="e5h-MA-1z7"/>
                                                 <constraint firstItem="wPh-bL-eBS" firstAttribute="trailing" secondItem="CqX-ee-jAJ" secondAttribute="trailing" id="fxb-Dh-Sm2"/>
@@ -97,13 +104,17 @@
                                                 <constraint firstItem="wgb-mD-jNw" firstAttribute="top" secondItem="CqX-ee-jAJ" secondAttribute="bottom" constant="21" id="jDq-KM-LQc"/>
                                                 <constraint firstItem="wPh-bL-eBS" firstAttribute="leading" secondItem="ojF-5I-baV" secondAttribute="leadingMargin" id="mkQ-Mm-U6i"/>
                                                 <constraint firstItem="CqX-ee-jAJ" firstAttribute="top" secondItem="wPh-bL-eBS" secondAttribute="bottom" constant="25" id="qw8-Nr-6XF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ym7-iH-nY8" secondAttribute="trailing" constant="13" id="uqH-Zc-mdA"/>
                                                 <constraint firstItem="wPh-bL-eBS" firstAttribute="leading" secondItem="CqX-ee-jAJ" secondAttribute="leading" id="wJ8-Rp-8sL"/>
+                                                <constraint firstItem="ym7-iH-nY8" firstAttribute="top" secondItem="ojF-5I-baV" secondAttribute="topMargin" constant="25" id="wwL-HQ-iBS"/>
                                                 <constraint firstItem="J9q-0A-iXC" firstAttribute="trailing" secondItem="ojF-5I-baV" secondAttribute="trailingMargin" id="yJS-hG-7mw"/>
                                             </constraints>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="postComment" destination="CqX-ee-jAJ" id="vv7-T9-0X9"/>
+                                            <outlet property="postImage" destination="wPh-bL-eBS" id="3ls-zN-I4e"/>
+                                            <outlet property="postuuidLabel" destination="ym7-iH-nY8" id="l9u-vg-z4P"/>
                                             <outlet property="usernameLabel" destination="J9q-0A-iXC" id="SKw-eN-Jy9"/>
                                         </connections>
                                     </tableViewCell>
@@ -170,19 +181,31 @@
                                     <action selector="uploadBtnClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="mD9-pS-j34"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETJ-WJ-bmN">
+                                <rect key="frame" x="359" y="58" width="0.0" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="BVV-bx-dOY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ETJ-WJ-bmN" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="58" id="2QM-eP-DCB"/>
                             <constraint firstItem="fUU-Bd-86f" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="23" id="8He-jr-nQ8"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="fUU-Bd-86f" secondAttribute="trailing" constant="68" id="Agj-F3-xDn"/>
                             <constraint firstItem="Aot-3u-wrl" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="BbM-vu-ErG"/>
                             <constraint firstItem="EYw-vb-wCS" firstAttribute="top" secondItem="Aot-3u-wrl" secondAttribute="bottom" constant="54" id="KVo-Pm-thk"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="ETJ-WJ-bmN" secondAttribute="trailing" constant="16" id="P6p-Ez-8jX"/>
                             <constraint firstItem="fUU-Bd-86f" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="67" id="ePY-xf-Dyl"/>
                             <constraint firstItem="Aot-3u-wrl" firstAttribute="centerX" secondItem="EYw-vb-wCS" secondAttribute="centerX" id="gNC-Mz-q5l"/>
                             <constraint firstItem="EYw-vb-wCS" firstAttribute="top" secondItem="Aot-3u-wrl" secondAttribute="bottom" constant="54" id="gNe-o8-8kv"/>
                             <constraint firstItem="fUU-Bd-86f" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="23" id="ipC-ly-yYL"/>
                             <constraint firstItem="Aot-3u-wrl" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="jIc-Fi-pyu"/>
                             <constraint firstItem="EYw-vb-wCS" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="jKu-ji-mA7"/>
+                            <constraint firstItem="ETJ-WJ-bmN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" symbolic="YES" id="ot0-Tf-EEE"/>
                             <constraint firstItem="Aot-3u-wrl" firstAttribute="top" secondItem="fUU-Bd-86f" secondAttribute="bottom" constant="54" id="qzG-us-kbi"/>
                             <constraint firstItem="Aot-3u-wrl" firstAttribute="leading" secondItem="fUU-Bd-86f" secondAttribute="leading" id="wVd-Pl-RyO"/>
                         </constraints>

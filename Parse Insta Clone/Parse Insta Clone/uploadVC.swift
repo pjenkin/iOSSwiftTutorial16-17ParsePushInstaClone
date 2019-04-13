@@ -15,6 +15,7 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var commentText: UITextView!
     @IBOutlet weak var uploadBtn: UIButton!     // NB declared as outlet as well as action, to enable button to be deactivated until image ready to upload
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
