@@ -18,6 +18,7 @@
 		948B7470225F7A7F006F3F70 /* Parse_Insta_CloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948B746F225F7A7F006F3F70 /* Parse_Insta_CloneUITests.swift */; };
 		948B747E225F87CC006F3F70 /* signUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948B747D225F87CC006F3F70 /* signUpVC.swift */; };
 		94B456752262161E00697FC6 /* feedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B456742262161E00697FC6 /* feedCell.swift */; };
+		94B456772262297F00697FC6 /* select-picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 94B456762262297F00697FC6 /* select-picture.png */; };
 		A8481A88F6C800140A36005B /* Pods_Parse_Insta_CloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D501680C188861BAB39D573 /* Pods_Parse_Insta_CloneTests.framework */; };
 		DD722EBD5CD8E0B9EF7CE97C /* Pods_Parse_Insta_CloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887790F15F373795829D905 /* Pods_Parse_Insta_CloneUITests.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		948B7471225F7A7F006F3F70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		948B747D225F87CC006F3F70 /* signUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpVC.swift; sourceTree = "<group>"; };
 		94B456742262161E00697FC6 /* feedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedCell.swift; sourceTree = "<group>"; };
+		94B456762262297F00697FC6 /* select-picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-picture.png"; sourceTree = "<group>"; };
 		D011BE9C845944C2C36CF270 /* Pods_Parse_Insta_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Parse_Insta_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E989DF61D01FDEB6CD7AC1 /* Pods-Parse Insta Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parse Insta Clone.debug.xcconfig"; path = "Target Support Files/Pods-Parse Insta Clone/Pods-Parse Insta Clone.debug.xcconfig"; sourceTree = "<group>"; };
 		E679CA1B200E1480343A4C8E /* Pods-Parse Insta CloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parse Insta CloneTests.debug.xcconfig"; path = "Target Support Files/Pods-Parse Insta CloneTests/Pods-Parse Insta CloneTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		948B744C225F7A7D006F3F70 /* Parse Insta Clone */ = {
 			isa = PBXGroup;
 			children = (
+				94B456762262297F00697FC6 /* select-picture.png */,
 				948B744D225F7A7D006F3F70 /* AppDelegate.swift */,
 				948B744F225F7A7D006F3F70 /* feedVC.swift */,
 				948B7451225F7A7D006F3F70 /* uploadVC.swift */,
@@ -284,6 +287,7 @@
 			files = (
 				948B745A225F7A7F006F3F70 /* LaunchScreen.storyboard in Resources */,
 				948B7457225F7A7F006F3F70 /* Assets.xcassets in Resources */,
+				94B456772262297F00697FC6 /* select-picture.png in Resources */,
 				948B7455225F7A7D006F3F70 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

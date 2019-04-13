@@ -144,30 +144,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="87" y="312" width="201.5" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="80" y="363" width="215" height="17"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select-picture.png" translatesAutoresizingMaskIntoConstraints="NO" id="fUU-Bd-86f">
+                                <rect key="frame" x="67" y="87" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="LCZ-3e-0Vs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="ScQ-eq-Z8N"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="g6X-rb-CUi"/>
+                                    <constraint firstAttribute="height" constant="128" id="lsq-pE-qUA"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Some text." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Aot-3u-wrl">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYw-vb-wCS">
+                                <rect key="frame" x="162" y="451" width="50" height="30"/>
+                                <color key="backgroundColor" red="0.43535894690638133" green="1" blue="0.37622668153523431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="vUl-6d-5sU"/>
+                                </constraints>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="uploadBtnClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="mD9-pS-j34"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="fUU-Bd-86f" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="23" id="8He-jr-nQ8"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="fUU-Bd-86f" secondAttribute="trailing" constant="68" id="Agj-F3-xDn"/>
+                            <constraint firstItem="Aot-3u-wrl" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="BbM-vu-ErG"/>
+                            <constraint firstItem="EYw-vb-wCS" firstAttribute="top" secondItem="Aot-3u-wrl" secondAttribute="bottom" constant="54" id="KVo-Pm-thk"/>
+                            <constraint firstItem="fUU-Bd-86f" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="67" id="ePY-xf-Dyl"/>
+                            <constraint firstItem="Aot-3u-wrl" firstAttribute="centerX" secondItem="EYw-vb-wCS" secondAttribute="centerX" id="gNC-Mz-q5l"/>
+                            <constraint firstItem="EYw-vb-wCS" firstAttribute="top" secondItem="Aot-3u-wrl" secondAttribute="bottom" constant="54" id="gNe-o8-8kv"/>
+                            <constraint firstItem="fUU-Bd-86f" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="23" id="ipC-ly-yYL"/>
+                            <constraint firstItem="Aot-3u-wrl" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="jIc-Fi-pyu"/>
+                            <constraint firstItem="EYw-vb-wCS" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="jKu-ji-mA7"/>
+                            <constraint firstItem="Aot-3u-wrl" firstAttribute="top" secondItem="fUU-Bd-86f" secondAttribute="bottom" constant="54" id="qzG-us-kbi"/>
+                            <constraint firstItem="Aot-3u-wrl" firstAttribute="leading" secondItem="fUU-Bd-86f" secondAttribute="leading" id="wVd-Pl-RyO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ucr-or-ut8"/>
+                    <connections>
+                        <outlet property="commentText" destination="Aot-3u-wrl" id="d8b-wB-jh3"/>
+                        <outlet property="postImage" destination="fUU-Bd-86f" id="yBG-rX-Gb2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -293,5 +318,6 @@
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
+        <image name="select-picture.png" width="240" height="128"/>
     </resources>
 </document>
