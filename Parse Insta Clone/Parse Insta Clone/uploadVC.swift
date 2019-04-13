@@ -16,10 +16,18 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        // for hiding any on-screen keyboard
+        let hideKeyboardGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(uploadVC.hideKeyboard))
+        self.view.addGestureRecognizer(hideKeyboardGestureRecognizer)
+        // NB assigned to entire view - tap anywhere on exposed view (ie not on keyboard, or text edit control &c) to hide keyboard
         
+        // for choosing an image
         postImage.isUserInteractionEnabled = true
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(uploadVC.selectImage))
         postImage.addGestureRecognizer(gestureRecognizer)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,9 +72,13 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         {
             postImage.image = selectedImage
         }
-        
         self.dismiss(animated: true, completion: nil)
-        
+    }
+    
+    @objc func hideKeyboard()        // NB @objc to avoid error Argument of '#selector' refers to instance method 'hideKeyboard()' that is not exposed to Objective-C
+    {
+        //self.view.endEditing(<#T##force: Bool##Bool#>)
+        self.view.endEditing(true)      // force keyboard (ie editing) to end (ie to hide)
     }
     
 }
