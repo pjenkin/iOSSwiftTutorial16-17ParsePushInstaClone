@@ -78,6 +78,9 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     self.postImage.image = UIImage(named: "select-picture.png")
                     self.commentText.text = ""
                     self.tabBarController?.selectedIndex = 0    // 0: viz the initial tab view controller, to the first ViewController ie feedVC - redirect thither
+                    
+                    // go back and show the uploaded post, by usin Notification Center with notification Id's by string, say, "newUpload" - cf observe in viewWillLoad in feedVC
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newUpload"), object: nil)
                 }
 
         /*

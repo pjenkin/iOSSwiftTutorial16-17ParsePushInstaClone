@@ -31,7 +31,11 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // get feed data from server
         getDataFromServer()
-        
+    }
+    
+    // when, and only when new upload performed, with redirect, in view do the getDataFromServer to show feed - updated - with new post in among feed
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(feedVC.getDataFromServer), name: NSNotification.Name(rawValue: "newUpload"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -116,7 +120,9 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
 
-    func getDataFromServer()
+    // NB @objc to avoid (at #selector) error: Argument of '#selector' refers to instance method 'getDataFromServer()' that is not exposed to Objective-C
+    /// function to get feed data from server (Parse server db in this case)
+    @objc func getDataFromServer()
     {
         let query = PFQuery(className: "Posts")
         query.addDescendingOrder("createdAt")           // sort by date, oldest-first
