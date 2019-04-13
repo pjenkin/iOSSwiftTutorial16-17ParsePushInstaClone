@@ -13,6 +13,7 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 
     @IBOutlet weak var postImage: UIImageView!  // NB not imageView - that's in feed
     @IBOutlet weak var commentText: UITextView!
+    @IBOutlet weak var uploadBtn: UIButton!     // NB declared as outlet as well as action, to enable button to be deactivated until image ready to upload
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,8 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(uploadVC.selectImage))
         postImage.addGestureRecognizer(gestureRecognizer)
         
-        
+        // disable button until image ready to upload
+        uploadBtn.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,11 +40,46 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 
     @IBAction func uploadBtnClicked(_ sender: Any) {
         
+        // now upload under way, disable button to prevent impatient click-click double-uploading
+        uploadBtn.isEnabled = false
+        
         let postObject = PFObject(className: "Posts")        // add a class
         // class names visible in Parse dashboard (eg http://34.247.48.250/apps/) a la tables
         postObject["commentText"] = self.commentText.text
-//        postObject["colour"] = "Red"
-//        postObject["age"] = 5
+        postObject["postOwner"] = PFUser.current()!.username!
+        // UIImageJPEGRepresentation(<#T##image: UIImage##UIImage#>, <#T##compressionQuality: CGFloat##CGFloat#>)
+        if let image = UIImageJPEGRepresentation(self.postImage.image!, 0.5)
+        {
+            var parseImageFile = PFFileObject(name: "image.jpg", data: image)
+            postObject["postImage"] = parseImageFile
+        }
+        else
+        {
+            print("Error processing image file data")
+        }
+        
+        let uuid = UUID().uuidString
+        postObject["postUuid"] = "\(uuid) \(PFUser.current()!.username!)"
+        postObject.saveInBackground()      // avoid having to write do ... try block
+            {(success, error) in
+                if error != nil
+                {
+                    let alert = UIAlertController(title: "Error", message:error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                    let button = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                    alert.addAction(button)
+                    self.present(alert, animated: true, completion: nil)
+                    // NB 1st: the Alert Controller, then 2nd: the button (as an AlertAction), then 3rd: add button action to the controller, 4th: present the alert to the user
+                    print(error?.localizedDescription)
+                }
+                else
+                {
+                    // assuming successful upload, reset controls of upload view
+                    self.postImage.image = UIImage(named: "select-picture.png")
+                    self.commentText.text = ""
+                    self.tabBarController?.selectedIndex = 0    // 0: viz the initial tab view controller, to the first ViewController ie feedVC - redirect thither
+                }
+
+        /*
         postObject.saveInBackground()      // avoid having to write do ... try block
             {(success, error) in
                 if error != nil
@@ -58,9 +95,12 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     // UIImageJPEGRepresentation(<#T##image: UIImage##UIImage#>, <#T##compressionQuality: CGFloat##CGFloat#>)
                     if let image = UIImageJPEGRepresentation(self.postImage.image!, 0.5)
                     {
-                        var parseImageFile = PFFileObject(data: image)
+                        var parseImageFile = PFFileObject(name: "image.jpg", data: image)
+                        postObject["postImage"] = parseImageFile
+                        
+                        
                         parseImageFile?.saveInBackground(
-                            { (success, error) -> Void in
+                            { (success, error) -> Void in               // https://stackoverflow.com/a/39600740
                                 if error == nil
                                 {
                                     print("uploaded image")
@@ -75,16 +115,14 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                     // TODO would be nice to rollback data here, as in a transaction
                                 }
                             })
+                        
                     }
                     else
                     {
                         print("Problem processing image file data")
                     }
-                }
+                }*/
         }
-
-        
-        
     }
     
     /// select an image to upload - handler for image Tap gesturerecognized
@@ -120,6 +158,9 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         if let selectedImage = selectedImageFromPicker
         {
             postImage.image = selectedImage
+            
+            // now enable upload button, since an image is available
+            uploadBtn.isEnabled = true
         }
         self.dismiss(animated: true, completion: nil)
     }
