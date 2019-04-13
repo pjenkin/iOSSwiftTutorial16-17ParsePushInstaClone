@@ -93,6 +93,7 @@ class signUpVC: UIViewController {
                     let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                     // set up button ready for user acknowledgement on alert
                     let button = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                    alert.addAction(button)
                     // show alert with button
                     self.present(alert, animated: true, completion: nil)
                     print(error?.localizedDescription)
@@ -126,6 +127,7 @@ class signUpVC: UIViewController {
             let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
             // set up button ready for user acknowledgement on alert
             let button = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+            alert.addAction(button)
             // show alert with button
             self.present(alert, animated: true, completion: nil)
             print(error?.localizedDescription)
