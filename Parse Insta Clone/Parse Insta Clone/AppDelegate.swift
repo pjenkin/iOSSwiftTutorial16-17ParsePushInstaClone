@@ -34,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaultACL.hasPublicReadAccess = true           // getPublicReadAccess = true??
         defaultACL.hasPublicWriteAccess = true          // getPublicWriteAccess = true??
         PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
+        
+        rememberLogin()         // if user has already logged-in, bypass log-in view
+        
         return true
     }
 
@@ -59,6 +62,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    /// bespoke function for remembering logged-in-ness
+    /// called from func application(...)
+    func rememberLogin()
+    {
+        let user : String? = UserDefaults.standard.string(forKey: "userLoggedIn")
+        
+        if user != nil
+        {
+            
+            let board : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBar = board.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController       // // NB withIdentifier: Identity Inspector/ Storyboard ID
+            
+            // now set to go straight to tabBar ie feed/upload
+            window?.rootViewController = tabBar
+        }
+    }    
 }
 

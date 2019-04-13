@@ -90,12 +90,25 @@ class signUpVC: UIViewController {
             PFUser.logInWithUsername(inBackground: usernameText.text!, password: passwordText.text!) {(user, error) in
                 if error != nil
                 {
+                    let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                    // set up button ready for user acknowledgement on alert
+                    let button = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                    // show alert with button
+                    self.present(alert, animated: true, completion: nil)
                     print(error?.localizedDescription)
                 }
                 else
                 {
+                    UserDefaults.standard.set(self.usernameText.text, forKey: "userLoggedIn")
+                    UserDefaults.standard.synchronize()             // NB need the synnchronize()
+
                     print("\(user?.username) is now logged in")
-                    self.performSegue(withIdentifier: "toTabBarVC", sender: nil)
+                    // self.performSegue(withIdentifier: "toTabBarVC", sender: nil)
+                    
+                    // get reference to AppDelegate.swift and call rememberLogin
+                    let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                    
+                    delegate.rememberLogin()
                 }
             }
         }
@@ -110,11 +123,25 @@ class signUpVC: UIViewController {
             (success, error) in
         if error != nil
         {
+            let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+            // set up button ready for user acknowledgement on alert
+            let button = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+            // show alert with button
+            self.present(alert, animated: true, completion: nil)
             print(error?.localizedDescription)
         }
         else
         {
+            UserDefaults.standard.set(self.usernameText.text, forKey: "userLoggedIn")
+            UserDefaults.standard.synchronize()             // NB need the synnchronize()
             print("User has been added")
+            print("\(user.username) is now logged in")
+            // self.performSegue(withIdentifier: "toTabBarVC", sender: nil)
+            
+            // get reference to AppDelegate.swift and call rememberLogin
+            let delegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            delegate.rememberLogin()
         }
         
     }
