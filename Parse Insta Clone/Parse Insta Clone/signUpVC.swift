@@ -94,11 +94,11 @@ class signUpVC: UIViewController {
                 }
                 else
                 {
-                    print("\(user?.username)")
+                    print("\(user?.username) is now logged in")
+                    self.performSegue(withIdentifier: "toTabBarVC", sender: nil)
                 }
             }
         }
-        
     }
     
     @IBAction func signUpBtnClicked(_ sender: Any) {
