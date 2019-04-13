@@ -36,7 +36,8 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // let cell = UITableViewCell()
         // populate Prototype cell(s) with bespoke cell object
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! feedCell
+        cell.usernameLabel.text = "checking username label"
         // cell.textLabel?.text = "Checking table setup"
         return cell
     }
@@ -44,7 +45,7 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // using additional delegate function, set height of prototype cell programmatically  https://stackoverflow.com/a/46438939
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 450
     }
     
 

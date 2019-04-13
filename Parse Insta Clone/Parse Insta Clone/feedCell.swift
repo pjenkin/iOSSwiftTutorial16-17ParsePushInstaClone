@@ -10,6 +10,10 @@ import UIKit
 
 class feedCell: UITableViewCell {
 
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var postComment: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,8 @@ class feedCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func likeBtnClicked(_ sender: Any) {
+    }
+    @IBAction func commentBtnClicked(_ sender: Any) {
+    }
 }

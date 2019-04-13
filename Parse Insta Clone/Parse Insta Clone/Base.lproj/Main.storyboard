@@ -59,6 +59,9 @@
                                                         <constraint firstAttribute="height" constant="30" id="ybS-oG-gUz"/>
                                                     </constraints>
                                                     <state key="normal" title="Like"/>
+                                                    <connections>
+                                                        <action selector="likeBtnClicked:" destination="Ipf-bn-sal" eventType="touchUpInside" id="VRX-Dd-0PR"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgb-mD-jNw">
                                                     <rect key="frame" x="293" y="391" width="67" height="30"/>
@@ -70,6 +73,9 @@
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="wQ9-9k-6m8"/>
                                                     </constraints>
                                                     <state key="normal" title="Comment"/>
+                                                    <connections>
+                                                        <action selector="commentBtnClicked:" destination="Ipf-bn-sal" eventType="touchUpInside" id="EGO-de-Cdk"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -96,6 +102,10 @@
                                             </constraints>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="postComment" destination="CqX-ee-jAJ" id="vv7-T9-0X9"/>
+                                            <outlet property="usernameLabel" destination="J9q-0A-iXC" id="SKw-eN-Jy9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
