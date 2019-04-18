@@ -64,6 +64,7 @@
 		948B747D225F87CC006F3F70 /* signUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpVC.swift; sourceTree = "<group>"; };
 		94B456742262161E00697FC6 /* feedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedCell.swift; sourceTree = "<group>"; };
 		94B456762262297F00697FC6 /* select-picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-picture.png"; sourceTree = "<group>"; };
+		94E476542268AA270037BB59 /* Parse Insta Clone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Parse Insta Clone.entitlements"; sourceTree = "<group>"; };
 		D011BE9C845944C2C36CF270 /* Pods_Parse_Insta_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Parse_Insta_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E989DF61D01FDEB6CD7AC1 /* Pods-Parse Insta Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parse Insta Clone.debug.xcconfig"; path = "Target Support Files/Pods-Parse Insta Clone/Pods-Parse Insta Clone.debug.xcconfig"; sourceTree = "<group>"; };
 		E679CA1B200E1480343A4C8E /* Pods-Parse Insta CloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parse Insta CloneTests.debug.xcconfig"; path = "Target Support Files/Pods-Parse Insta CloneTests/Pods-Parse Insta CloneTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		948B744C225F7A7D006F3F70 /* Parse Insta Clone */ = {
 			isa = PBXGroup;
 			children = (
+				94E476542268AA270037BB59 /* Parse Insta Clone.entitlements */,
 				94B456762262297F00697FC6 /* select-picture.png */,
 				948B744D225F7A7D006F3F70 /* AppDelegate.swift */,
 				948B744F225F7A7D006F3F70 /* feedVC.swift */,
@@ -249,6 +251,17 @@
 				TargetAttributes = {
 					948B7449225F7A7D006F3F70 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					948B745F225F7A7F006F3F70 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -568,7 +581,9 @@
 			baseConfigurationReference = E1E989DF61D01FDEB6CD7AC1 /* Pods-Parse Insta Clone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Parse Insta Clone/Parse Insta Clone.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3TVT39HT56;
 				INFOPLIST_FILE = "Parse Insta Clone/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -586,7 +601,9 @@
 			baseConfigurationReference = 5E3F8436A790DA2657C185E1 /* Pods-Parse Insta Clone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Parse Insta Clone/Parse Insta Clone.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3TVT39HT56;
 				INFOPLIST_FILE = "Parse Insta Clone/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
