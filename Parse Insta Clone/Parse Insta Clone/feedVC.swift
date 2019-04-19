@@ -19,8 +19,6 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var commentTextArray = [String]()
     var postOwnerArray = [String]()
     var postUuidArray = [String]()
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +30,31 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // get feed data from server
         getDataFromServer()
+
+        // find whether user yet subscribed (to OneSignal push notifications)
+        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
         
+        let userID = status.subscriptionStatus.userId       // userID playerID
         
+        // let pushToken = status.subscriptionStatus.pushToken
+        
+        print("userID: \(userID)")                          // diagnostic
+        // print("pushToken: \(pushToken)")                    // diagnostic
+        
+        if userID != nil
+        {
+            // use Parse user
+            let user = PFUser.current()!.username!
+            let object = PFObject(className: "PlayerID")
+            object["username"] = user
+            object["playerID"] = userID
+            object.saveEventually()         // NB not saveInBackground - saves error messages in case no connection, e.g. - save whenever chance may arise, and userID will stay constant after registration once with OneSignal
+        }
+/*
         // Push notification check - only sending to 1 phone (defined by PlayerID)
         OneSignal.postNotification(["contents": ["en": "Checking Message"], "include_player_ids": ["5c187be3-710a-419e-8c14-dfe6001db8e8"]])
         // pasted from https://documentation.onesignal.com/docs/ios-native-sdk#section--postnotification-
+ */
     }
     
     // when, and only when new upload performed, with redirect, in view do the getDataFromServer to show feed - updated - with new post in among feed
