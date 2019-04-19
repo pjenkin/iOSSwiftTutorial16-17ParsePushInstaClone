@@ -7,9 +7,18 @@ target 'Parse Insta Clone' do
 
   # Pods for Parse Insta Clone
 
-
   pod 'Parse'
   # parseplatform.github.io
+
+  #target 'Parse Insta Clone' do
+    #pod 'OneSignal', '>= 2.6.2', '< 3.0'
+  #end
+
+  target 'OneSignalNotificationServiceExtension' do
+    use_frameworks!
+    pod 'OneSignal', '>= 2.6.2', '< 3.0'
+  end
+
 
   target 'Parse Insta CloneTests' do
     inherit! :search_paths

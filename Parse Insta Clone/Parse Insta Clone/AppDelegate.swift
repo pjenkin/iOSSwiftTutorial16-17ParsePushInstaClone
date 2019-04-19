@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Parse config
         let config = ParseClientConfiguration {
             (ParseMutableClientConfiguration) in
             ParseMutableClientConfiguration.applicationId = "4db3417ac4d79c34640760d3c13c3728cd26604a"
@@ -34,6 +36,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaultACL.hasPublicReadAccess = true           // getPublicReadAccess = true??
         defaultACL.hasPublicWriteAccess = true          // getPublicWriteAccess = true??
         PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
+
+        // OneSignal config
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+        
+        // Replace 'YOUR_APP_ID' with your OneSignal App ID.
+        OneSignal.initWithLaunchOptions(launchOptions,
+                                        appId: "c474e572-9466-4f70-9584-565d00e72385",
+                                        handleNotificationAction: nil,
+                                        settings: onesignalInitSettings)
+        
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+        
+        // Recommend moving the below line to prompt for push after informing the user about
+        //   how your app will use them.
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+            print("User accepted notifications: \(accepted)")
+        })
+        
+        // in this case from the OneSignal web page Add App setup (17-163 step 4) Your App ID: c474e572-9466-4f70-9584-565d00e72385
         
         rememberLogin()         // if user has already logged-in, bypass log-in view
         

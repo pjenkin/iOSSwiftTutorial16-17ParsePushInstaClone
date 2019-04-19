@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import OneSignal
 
 class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -31,6 +32,11 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // get feed data from server
         getDataFromServer()
+        
+        
+        // Push notification check - only sending to 1 phone (defined by PlayerID)
+        OneSignal.postNotification(["contents": ["en": "Checking Message"], "include_player_ids": ["5c187be3-710a-419e-8c14-dfe6001db8e8"]])
+        // pasted from https://documentation.onesignal.com/docs/ios-native-sdk#section--postnotification-
     }
     
     // when, and only when new upload performed, with redirect, in view do the getDataFromServer to show feed - updated - with new post in among feed
