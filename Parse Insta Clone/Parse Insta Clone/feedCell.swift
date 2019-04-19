@@ -79,7 +79,7 @@ class feedCell: UITableViewCell {
                             self.playerIDArray.append(poster.object(forKey: "playerID") as! String)
                             
                             //OneSignal.postNotification(<#T##jsonData: [AnyHashable : Any]!##[AnyHashable : Any]!#>)
-                            OneSignal.postNotification(["contents": ["en": "Someone, \(PFUser.current()!.username!), liked your post"], "include_player_ids": [self.playerIDArray.last]])
+                            OneSignal.postNotification(["contents": ["en": "Someone, \(PFUser.current()!.username!), liked your post"], "include_player_ids": [self.playerIDArray.last], "ios_badgeType" : "Increase", "ios_badgeCount" : "1"])
                             // as per docs in https://documentation.onesignal.com/docs/ios-native-sdk#section--postnotification-
                         }
                     }
@@ -136,7 +136,7 @@ class feedCell: UITableViewCell {
                             self.playerIDArray.append(poster.object(forKey: "playerID") as! String)
                             
                             //OneSignal.postNotification(<#T##jsonData: [AnyHashable : Any]!##[AnyHashable : Any]!#>)
-                            OneSignal.postNotification(["contents": ["en": "Someone, \(PFUser.current()!.username!), commented on your post"], "include_player_ids": [self.playerIDArray.last]])
+                            OneSignal.postNotification(["contents": ["en": "Someone, \(PFUser.current()!.username!), commented on your post"], "include_player_ids": [self.playerIDArray.last], "ios_badgeType" : "Increase", "ios_badgeCount" : "1"])
                             // as per docs in https://documentation.onesignal.com/docs/ios-native-sdk#section--postnotification-
                         }
                     }
