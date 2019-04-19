@@ -187,12 +187,12 @@
 				94B456762262297F00697FC6 /* select-picture.png */,
 				948B744D225F7A7D006F3F70 /* AppDelegate.swift */,
 				948B744F225F7A7D006F3F70 /* feedVC.swift */,
-				948B7451225F7A7D006F3F70 /* uploadVC.swift */,
-				948B7453225F7A7D006F3F70 /* Main.storyboard */,
 				94B456742262161E00697FC6 /* feedCell.swift */,
 				948B747D225F87CC006F3F70 /* signUpVC.swift */,
-				948B7456225F7A7F006F3F70 /* Assets.xcassets */,
+				948B7451225F7A7D006F3F70 /* uploadVC.swift */,
+				948B7453225F7A7D006F3F70 /* Main.storyboard */,
 				948B7458225F7A7F006F3F70 /* LaunchScreen.storyboard */,
+				948B7456225F7A7F006F3F70 /* Assets.xcassets */,
 				948B745B225F7A7F006F3F70 /* Info.plist */,
 			);
 			path = "Parse Insta Clone";
@@ -484,15 +484,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Parse Insta Clone-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
 			);
