@@ -55,6 +55,7 @@ class feedCell: UITableViewCell {
                 let query = PFQuery(className: "PlayerID")
                 query.whereKey("username", equalTo: self.usernameLabel.text!)   // get poster's name
                 // NB to work, poster must have been registered via the app with OneSignal
+                query.limit = 1     // in case of repeated/duplicate OneSignal registrations, use only the first one
                 query.findObjectsInBackground(block: {(posters, error) in
                     if error != nil
                     {
@@ -73,7 +74,8 @@ class feedCell: UITableViewCell {
                         //for object in objects!
                         for poster in posters!
                         {
-                            // should only be 1 record for this user/device - get the playerID
+                            // should only be 1 record for this user/device? - get the playerID
+                            // may be more than 1 if duplicate/repeat registrations, so use query.limit (above)
                             self.playerIDArray.append(poster.object(forKey: "playerID") as! String)
                             
                             //OneSignal.postNotification(<#T##jsonData: [AnyHashable : Any]!##[AnyHashable : Any]!#>)
